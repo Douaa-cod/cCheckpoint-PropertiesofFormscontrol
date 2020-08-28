@@ -1,0 +1,50 @@
+<div class="col-md-12 p-4">
+  <form #fromControl="ngForm">
+    <div class="form-group">
+      <label for="inputEmail">Email address</label>
+      <input type="email"
+              class="form-control"
+              name="inputEmail"
+              ngModel
+              #email="ngModel"
+              required
+              email
+              id="inputEmail"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+      >
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <div class="alert alert-danger"
+           *ngIf="email.invalid && email.dirty"
+      >
+        Invalide email, veuillez saisir un email valide.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword">Password</label>
+      <input type="password"
+             class="form-control"
+             name="inputPassword"
+             ngModel
+             #password="ngModel"
+             required
+             minlength="6"
+             id="inputPassword"
+             placeholder="Password"
+      >
+    </div>
+    <div class="alert alert-danger"
+         *ngIf="password.invalid && password.dirty"
+    >
+      Invalide password, il doit avoir au minimum 6 caractères.
+    </div>
+    <button type="submit"
+            [disabled]="fromControl.invalid"
+            class="btn btn-primary"
+            (click)="login(fromControl)"
+    >
+      Login
+    </button>
+  </form>
+</div>
+
